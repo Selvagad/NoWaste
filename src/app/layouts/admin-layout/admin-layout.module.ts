@@ -15,6 +15,8 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
+import { NgxGaugeModule } from 'ngx-gauge';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -22,6 +24,7 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
     FormsModule,
     HttpClientModule,
     NgbModule,
+    NgxGaugeModule
   ],
   declarations: [
     DashboardComponent,

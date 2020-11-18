@@ -1,12 +1,32 @@
 
 <div class=" content">
-  <div class="row">
     <div class="card">
       <div class="card-body">
-        
+        <div class="row" style="justify-content: center; margin-bottom: 3%;">
+          <div *ngFor="let element of categories1" class="col-lg-3">
+            <ngx-gauge 
+              [type]="element.gaugeType" 
+              [value]="element.gaugeValue" 
+              [label]="element.gaugeLabel"  
+              [append]="element.gaugeAppendText"
+              size="270">
+            </ngx-gauge>
+          </div>
+        </div>
+
+        <div class="row" style="justify-content: center;">
+          <div *ngFor="let element of categories2" class="col-lg-3">
+            <ngx-gauge 
+              [type]="element.gaugeType" 
+              [value]="element.gaugeValue" 
+              [label]="element.gaugeLabel"  
+              [append]="element.gaugeAppendText"
+              size="270">
+            </ngx-gauge>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
   <div class=" row">
     <div class=" col-lg-4">
       <div class=" card card-chart">
