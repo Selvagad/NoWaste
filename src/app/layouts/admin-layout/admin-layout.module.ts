@@ -16,6 +16,7 @@ import { TypographyComponent } from "../../pages/typography/typography.component
 import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 
 import { NgxGaugeModule } from 'ngx-gauge';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { NgxGaugeModule } from 'ngx-gauge';
     FormsModule,
     HttpClientModule,
     NgbModule,
-    NgxGaugeModule
+    NgxGaugeModule,
+    MatSlideToggleModule 
   ],
   declarations: [
     DashboardComponent,
