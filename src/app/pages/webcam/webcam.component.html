@@ -6,10 +6,10 @@
         <div class=" card-header">
           <h3 class=" card-title">Reconnaissance du déchet par webcam</h3>
         </div>
-        <div class=" card-body">
-          <div class="row">
-            <div class=" col-md-3" style="border: 1px solid;">
-              <h4>Activation de la source de l'image</h4>
+        <div class=" card-body" style="padding-bottom: 4%;">
+          <div class="row" style="min-height: 285px;">
+            <div class=" col-md-3" style="border: 1px solid; margin-left: 3%;">
+              <h4 style="padding-top: 10px;">Activation de la source de l'image</h4>
               <div style="margin-top: 8%; margin-left: 10%;">
                 <h6>Autoriser l'accès à la caméra</h6>
                 <button (click)="init()" style="    margin-right: 3%;">Utiliser votre caméra</button>
@@ -17,9 +17,12 @@
               </div>
             </div>
   
-            <div class=" col-md-3" style="border: 1px solid;">
-              <div #video id="webcam-container"></div>
-              <p id="result" style="display: none;">Résultat: {{result}}</p>
+            <div class=" col-md-3" style="border: 1px solid; margin-left: 2%;">
+              <h4 style="padding-top: 10px;">Reconnaissance grâce à l'IA</h4>
+              <div style="text-align: center;">
+                <div #video id="webcam-container"></div>
+                <p id="result" style="display: none;">Résultat: {{result}}</p>
+              </div>
           </div>
         </div>
       </div>
