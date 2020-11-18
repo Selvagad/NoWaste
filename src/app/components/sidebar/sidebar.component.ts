@@ -14,13 +14,13 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/icons",
+    path: "/webcam",
     title: "Reconnaissance par webcam",
     icon: "icon-camera-18",
     class: ""
   },
   {
-    path: "/maps",
+    path: "/file",
     title: "Reconnaissance par fichier",
     icon: "icon-image-02",
     class: "" },
