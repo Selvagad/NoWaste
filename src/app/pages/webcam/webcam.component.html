@@ -1,28 +1,33 @@
 
 <div class=" content">
-  <div class=" row">
-    <div class=" col-md-12">
-      <div class=" card">
-        <div class=" card-header">
-          <h3 class=" card-title">Reconnaissance du déchet par webcam</h3>
-        </div>
-        <div class=" card-body" style="padding-bottom: 4%;">
-          <div class="row" style="min-height: 285px;">
-            <div class=" col-md-3" style="border: 1px solid; margin-left: 3%;">
-              <h4 style="padding-top: 10px;">Activation de la source de l'image</h4>
-              <div style="margin-top: 8%; margin-left: 10%;">
-                <h6>Autoriser l'accès à la caméra</h6>
-                <button (click)="init()" style="    margin-right: 3%;">Utiliser votre caméra</button>
-                <button (click)="disable()">Stopper la caméra</button>
-              </div>
-            </div>
   
-            <div class=" col-md-3" style="border: 1px solid; margin-left: 2%;">
-              <h4 style="padding-top: 10px;">Reconnaissance grâce à l'IA</h4>
-              <div style="text-align: center;">
-                <div #video id="webcam-container"></div>
-                <p id="result" style="display: none;">Résultat: {{result}}</p>
-              </div>
+  <div class="row">
+
+    <div class=" col-lg-6" >
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <h1 class=" card-category" style="font-size: 110%;">Activation de la source de l'image</h1>
+        </div>
+        <div class=" card-body" style="min-height: 330px;">
+          <div style="margin-top: 8%; margin-left: 10%;">
+            <h6 style="margin-bottom: 2%;">Autoriser l'accès à la caméra</h6>
+            <button (click)="init()" style="margin-bottom: 6%; padding: 5px 13px;">Utiliser votre caméra</button>
+            <h6 style="margin-bottom: 2%;">Bloquer l'accès à la caméra</h6>
+            <button (click)="disable()" style="padding: 5px 13px;">Stopper la caméra</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class=" col-lg-6">
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <h1 class=" card-category" style="font-size: 110%;">Reconnaissance grâce à l'IA</h1>
+        </div>
+        <div class=" card-body" style="min-height: 330px;">
+          <div style="text-align: center;">
+            <div #video id="webcam-container"></div>
+            <p id="result" style="display: none; margin-top: 2%;">Résultat: {{result}}</p>
           </div>
         </div>
       </div>

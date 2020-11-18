@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
     },
     {
       gaugeType : "arch",
-      gaugeValue : 70,
+      gaugeValue : 76,
       gaugeLabel : "Emballage carton",
       gaugeAppendText : "%",
     }
@@ -36,6 +36,16 @@ export class DashboardComponent implements OnInit {
   ];
   constructor() {}
 
+  getColor(value: any) {
+    console.log(value)
+    if (value>0 && value<=50) {
+      return 'green';
+    } else if (value>50 && value<=75) {
+      return 'orange';
+    } else if (value>75 && value<=100) {
+      return 'red';
+    }
+  }
   ngOnInit() {
   }
 }
