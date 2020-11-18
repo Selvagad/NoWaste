@@ -24,18 +24,18 @@ export const ROUTES: RouteInfo[] = [
     title: "Reconnaissance par fichier",
     icon: "icon-image-02",
     class: "" },
-  {
+ /* {
     path: "/notifications",
     title: "Description",
     icon: "icon-bell-55",
     class: ""
   },
-  {
+   {
     path: "/typography",
     title: "Typography",
     icon: "icon-align-center",
     class: ""
-  }
+  } */
 ];
 
 @Component({

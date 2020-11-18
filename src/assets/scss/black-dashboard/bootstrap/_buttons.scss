@@ -111,6 +111,7 @@ fieldset:disabled a.btn {
 //
 
 .btn-lg {
+  text-align: left;
   @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
 }
 
@@ -124,8 +125,10 @@ fieldset:disabled a.btn {
 //
 
 .btn-block {
+  justify-content: flex-end;
   display: block;
   width: 100%;
+  @include button-size($btn-padding-y-lg, $btn-padding-x-lg, $font-size-lg, $btn-line-height-lg, $btn-border-radius-lg);
 
   // Vertically space out multiple block buttons
   + .btn-block {

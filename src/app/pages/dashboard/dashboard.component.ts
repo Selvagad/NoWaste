@@ -6,6 +6,7 @@ import Chart from 'chart.js';
   templateUrl: "dashboard.component.html"
 })
 export class DashboardComponent implements OnInit {
+  isChecked = true;
   categories1 = [
     {
       gaugeType : "arch",
@@ -45,6 +46,12 @@ export class DashboardComponent implements OnInit {
     } else if (value>75 && value<=100) {
       return 'red';
     }
+  }
+  callTri(){
+    console.log("centre")
+  }
+  callTech (){
+    console.log("tech")
   }
   ngOnInit() {
   }
