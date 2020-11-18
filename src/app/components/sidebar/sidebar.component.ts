@@ -3,7 +3,6 @@ import { Component, OnInit } from "@angular/core";
 declare interface RouteInfo {
   path: string;
   title: string;
-  rtlTitle: string;
   icon: string;
   class: string;
 }
@@ -11,57 +10,30 @@ export const ROUTES: RouteInfo[] = [
   {
     path: "/dashboard",
     title: "Taux de remplissage",
-    rtlTitle: "لوحة القيادة",
     icon: "icon-chart-pie-36",
     class: ""
   },
   {
     path: "/icons",
     title: "Reconnaissance par webcam",
-    rtlTitle: "الرموز",
     icon: "icon-camera-18",
     class: ""
   },
   {
     path: "/maps",
     title: "Reconnaissance par fichier",
-    rtlTitle: "خرائط",
     icon: "icon-image-02",
     class: "" },
   {
     path: "/notifications",
     title: "Description",
-    rtlTitle: "إخطارات",
     icon: "icon-bell-55",
-    class: ""
-  },
-
-  {
-    path: "/user",
-    title: "User Profile",
-    rtlTitle: "ملف تعريفي للمستخدم",
-    icon: "icon-single-02",
-    class: ""
-  },
-  {
-    path: "/tables",
-    title: "Table List",
-    rtlTitle: "قائمة الجدول",
-    icon: "icon-puzzle-10",
     class: ""
   },
   {
     path: "/typography",
     title: "Typography",
-    rtlTitle: "طباعة",
     icon: "icon-align-center",
-    class: ""
-  },
-  {
-    path: "/rtl",
-    title: "RTL Support",
-    rtlTitle: "ار تي ال",
-    icon: "icon-world",
     class: ""
   }
 ];
