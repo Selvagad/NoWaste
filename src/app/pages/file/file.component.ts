@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import Chart from 'chart.js';
 import * as tmImage from '@teachablemachine/image';
 import { ObjetTrie } from 'src/app/Model/objet-trie';
 import { ObjetTrieRepositoryService } from 'src/app/service/objet-trie-repository.service';
@@ -11,10 +12,95 @@ import { ObjetTrieRepositoryService } from 'src/app/service/objet-trie-repositor
 })
 
 export class FileComponent implements OnInit {
+  public canvas : any;
+  public ctx;
+  public myChart;
+  public contenu = this._objetTrie.getContenu();
+  public data=[this.contenu.nbBouteille, this.contenu.nbCannette, this.contenu.nbEmballage, this.contenu.nbInconnu]
+  public gradientBarChartConfiguration: any = {
+    maintainAspectRatio: false,
+    legend: {
+      display: false
+    },
+
+    tooltips: {
+      backgroundColor: '#f5f5f5',
+      titleFontColor: '#333',
+      bodyFontColor: '#666',
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest"
+    },
+    responsive: true,
+    scales: {
+      yAxes: [{
+
+        gridLines: {
+          drawBorder: false,
+          color: 'rgba(29,140,248,0.1)',
+          zeroLineColor: "transparent",
+        },
+        ticks: {
+          suggestedMin: 0,
+          suggestedMax: 8,
+          padding: 20,
+          fontColor: "#9e9e9e"
+        }
+      }],
+
+      xAxes: [{
+
+        gridLines: {
+          drawBorder: false,
+          color: 'rgba(29,140,248,0.1)',
+          zeroLineColor: "transparent",
+        },
+        ticks: {
+          padding: 20,
+          fontColor: "#9e9e9e"
+        }
+      }]
+    }
+  };
   ngOnInit(): void {
     
+    this.canvas = document.getElementById("CountryChart");
+    this.ctx  = this.canvas.getContext("2d");
+    var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+    gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+
+
+    this.myChart = new Chart(this.ctx, {
+      type: 'bar',
+      responsive: true,
+      legend: {
+        display: false
+      },
+      data: {
+        labels: ['Bouteilles plastiques', 'Canettes', 'Gobelet carton', 'Non trié'],
+        datasets: [{
+          label: "Nombre d'objet",
+          fill: true,
+          backgroundColor: gradientStroke,
+          hoverBackgroundColor: gradientStroke,
+          borderColor: '#1f8ef1',
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          data: [this.contenu.nbBouteille, this.contenu.nbCannette, this.contenu.nbEmballage, this.contenu.nbInconnu],
+        }]
+      },
+      options: this.gradientBarChartConfiguration
+    });
+    
+    
   }
-  public contenu = this._objetTrie.getContenu();
+  
   url = 'https://teachablemachine.withgoogle.com/models/S_obh6TEt/';
   model;
   predictions;
@@ -55,6 +141,7 @@ export class FileComponent implements OnInit {
       this.result = this.predictions[index].className;
       console.log(this.result)
       this.setObjetTrie(this.result)
+      this.addData()      
     
   }
 
@@ -75,7 +162,38 @@ export class FileComponent implements OnInit {
     this.contenu = this._objetTrie.getContenu();
 
   }
-  
+  addData() { 
+    var gradientStroke = this.ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, 'rgba(29,140,248,0.2)');
+    gradientStroke.addColorStop(0.4, 'rgba(29,140,248,0.0)');
+    gradientStroke.addColorStop(0, 'rgba(29,140,248,0)'); //blue colors
+    this.myChart = new Chart(this.ctx, {
+    type: 'bar',
+    responsive: true,
+    legend: {
+      display: false
+    },
+    data: {
+      labels: ['Bouteilles plastiques', 'Canettes', 'Gobelet carton', 'Non trié'],
+      datasets: [{
+        label: "Countries",
+        fill: true,
+        backgroundColor: gradientStroke,
+        hoverBackgroundColor: gradientStroke,
+        borderColor: '#1f8ef1',
+        borderWidth: 2,
+        borderDash: [],
+        borderDashOffset: 0.0,
+        data: [this.contenu.nbBouteille, this.contenu.nbCannette, this.contenu.nbEmballage, this.contenu.nbInconnu],
+      }]
+    },
+    options: this.gradientBarChartConfiguration
+  });
+
+    }
+
+
   // tslint:disable-next-line:use-lifecycle-interface
   async ngAfterViewInit() {
     // const modelURL = this.url + 'model.json';

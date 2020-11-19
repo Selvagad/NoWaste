@@ -49,7 +49,11 @@ export class ObjetTrieRepositoryService {
     new ObjetTrie({
       Id:10,
       Type: "inconnu",
-    })
+    }),
+    new ObjetTrie({
+      Id:11,
+      Type: "bouteille",
+    }),
   ];
   
 
