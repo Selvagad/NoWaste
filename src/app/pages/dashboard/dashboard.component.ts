@@ -18,7 +18,7 @@ export class DashboardComponent implements OnInit {
     {
       gaugeType : "arch",
       gaugeValue : 76,
-      gaugeLabel : "Emballage carton",
+      gaugeLabel : "Gobelets carton",
       gaugeAppendText : "%",
     }
   ];
@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
     {
       gaugeType : "arch",
       gaugeValue : 67,
-      gaugeLabel : "Bouteille plastique",
+      gaugeLabel : "Bouteilles plastique",
       gaugeAppendText : "%",
     },
     {
