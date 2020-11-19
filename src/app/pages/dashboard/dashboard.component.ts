@@ -70,8 +70,7 @@ export class DashboardComponent implements OnInit {
 
     this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Nous venons d\'alerter le <b>'+ tri +'</b> de votre demande de collecte.',
      '', {
-        disableTimeOut: true,
-        closeButton: true,
+        timeOut: 2000,
         enableHtml: true,
         toastClass: "alert alert-success alert-with-icon",
         positionClass: 'toast-' + from + '-' +  align
@@ -85,12 +84,22 @@ export class DashboardComponent implements OnInit {
       } else if (element.gaugeValue > 90 && element.gaugeValue < 100) {
         element.gaugeValue = 100;
         this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> La benne <b>'+ element.gaugeLabel +'</b> est pleine.',
-     '', {
-        timeOut: 2000,
-        enableHtml: true,
-        toastClass: "alert alert-danger alert-with-icon",
-        positionClass: 'toast-bottom-center'
-      });
+        '', {
+            timeOut: 2000,
+            enableHtml: true,
+            toastClass: "alert alert-danger alert-with-icon",
+            positionClass: 'toast-bottom-center'
+          });
+        
+        if (this.isChecked) {
+          this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Nous venons d\'alerter le <b>Centre de tri</b> de votre demande de collecte.',
+        '', {
+            timeOut: 2000,
+            enableHtml: true,
+            toastClass: "alert alert-success alert-with-icon",
+            positionClass: 'toast-bottom-center'
+          });
+        }
       }
     });
     this.categories2.forEach(element => {
@@ -99,12 +108,22 @@ export class DashboardComponent implements OnInit {
       } else if (element.gaugeValue > 90 && element.gaugeValue < 100) {
         element.gaugeValue = 100;
         this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> La benne <b>'+ element.gaugeLabel +'</b> est pleine.',
-     '', {
-        timeOut: 2000,
-        enableHtml: true,
-        toastClass: "alert alert-danger alert-with-icon",
-        positionClass: 'toast-bottom-center'
-      });
+        '', {
+            timeOut: 2000,
+            enableHtml: true,
+            toastClass: "alert alert-danger alert-with-icon",
+            positionClass: 'toast-bottom-center'
+          });
+
+      if (this.isChecked) {
+        this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Nous venons d\'alerter le <b>Centre de tri</b> de votre demande de collecte.',
+      '', {
+          timeOut: 2000,
+          enableHtml: true,
+          toastClass: "alert alert-success alert-with-icon",
+          positionClass: 'toast-bottom-center'
+        });
+      }
       }
     });
   }
