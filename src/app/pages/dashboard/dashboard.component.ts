@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import Chart from 'chart.js';
 import { ToastrService } from 'ngx-toastr';
+import { Contenu } from 'src/app/Model/contenu';
+import { ObjetTrieRepositoryService } from 'src/app/service/objet-trie-repository.service';
 
 @Component({
   selector: "app-dashboard",
@@ -8,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class DashboardComponent implements OnInit {
   isChecked = true;
+ 
   categories1 = [
     {
       gaugeType : "arch",
@@ -36,7 +39,7 @@ export class DashboardComponent implements OnInit {
       gaugeAppendText : "%",
     },
   ];
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService, private _objetTrie: ObjetTrieRepositoryService) {}
 
   getColor(value: any) {
     console.log(value)
@@ -105,4 +108,5 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+  
 }
