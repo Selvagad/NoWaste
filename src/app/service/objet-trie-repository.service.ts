@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ObjetTrie } from '../Model/objet-trie';
 import { of } from 'rxjs';
 import { Content } from '@angular/compiler/src/render3/r3_ast';
-import { Contenue } from '../Model/contenue';
+import { Contenu } from '../Model/contenu';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +50,7 @@ export class ObjetTrieRepositoryService {
       Type: "inconnu",
     })
   ];
-  private poubelleContenu =new Contenue()
+  private poubelleContenu =new Contenu()
 
   constructor() { }
 
@@ -74,7 +74,7 @@ export class ObjetTrieRepositoryService {
   }
   public getContenu(){
     if (this.poubelleContenu == null){
-      var c =new Contenue({
+      var c =new Contenu({
         nbBouteille: 0,
         nbCannette: 0,
         nbEmballage: 0,

@@ -1,7 +1,7 @@
-import { Contenue } from './contenue';
+import { Contenu } from './contenu';
 
 describe('Contenue', () => {
   it('should create an instance', () => {
-    expect(new Contenue()).toBeTruthy();
+    expect(new Contenu()).toBeTruthy();
   });
 });

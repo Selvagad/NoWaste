@@ -1,4 +1,4 @@
-export class Contenue {
+export class Contenu {
     public nbBouteille: number;
     public nbCannette: number;
     public nbEmballage: number;
