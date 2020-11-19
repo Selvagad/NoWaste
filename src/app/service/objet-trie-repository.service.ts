@@ -8,6 +8,7 @@ import { Contenu } from '../Model/contenu';
   providedIn: 'root'
 })
 export class ObjetTrieRepositoryService {
+  private poubelleContenu =new Contenu();
   private poubelle = [
     new ObjetTrie({
       Id:1,
@@ -50,7 +51,7 @@ export class ObjetTrieRepositoryService {
       Type: "inconnu",
     })
   ];
-  private poubelleContenu =new Contenu()
+  
 
   constructor() { }
 
@@ -72,8 +73,7 @@ export class ObjetTrieRepositoryService {
     });
     return id;
   }
-  public getContenu(){
-    if (this.poubelleContenu == null){
+  public getContenu(){    
       var c =new Contenu({
         nbBouteille: 0,
         nbCannette: 0,
@@ -95,11 +95,9 @@ export class ObjetTrieRepositoryService {
         }
       });     
     this.poubelleContenu=c;
-    return of (this.poubelleContenu)
+    return (this.poubelleContenu)
       
-    }
-    else{
-      return of (this.poubelleContenu)
-    }
+    
+    
   }
 }

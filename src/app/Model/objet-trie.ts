@@ -14,4 +14,7 @@ export class ObjetTrie {
     setId(Id:number){
         this.Id = Id;
     }
+    setType(s:string){
+        this.Type=s;
+    }
 }

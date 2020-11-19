@@ -32,10 +32,19 @@
             <ul>
                 <li *ngFor="let item of predictions">{{item.className}} : {{(item.probability*100).toFixed(2)}}</li>
             </ul>
-
+            
           </div>
         </div>
+        
+
       </div>
+    </div>
+    <div class=" card-body">
+      <div class=" chart-area"><canvas id="CountryChart"> </canvas></div>
+    </div>
+    <div>
+      {{contenu.nbBouteille}}
+      {{contenu.nbCannette}}
     </div>
 
 

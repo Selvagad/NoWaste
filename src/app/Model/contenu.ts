@@ -16,4 +16,6 @@ export class Contenu {
         if (data.hasOwnProperty('nbEmballage')) this.nbEmballage = data.nbEmballage;
         if (data.hasOwnProperty('nbInconnu')) this.nbInconnu = data.nbInconnu;    
     }
+
+
 }
