@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import Chart from 'chart.js';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: "app-dashboard",
@@ -35,7 +36,7 @@ export class DashboardComponent implements OnInit {
       gaugeAppendText : "%",
     },
   ];
-  constructor() {}
+  constructor(private toastr: ToastrService) {}
 
   getColor(value: any) {
     console.log(value)
@@ -54,5 +55,54 @@ export class DashboardComponent implements OnInit {
     console.log("tech")
   }
   ngOnInit() {
+  }
+
+  showNotification(from, align, centre){
+    let tri: string;
+    if (centre === 'tri') {
+      tri = 'Centre de tri';
+    } else {
+      tri = "Centre technique";
+    }
+
+    this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Nous venons d\'alerter le <b>'+ tri +'</b> de votre demande de collecte.',
+     '', {
+        disableTimeOut: true,
+        closeButton: true,
+        enableHtml: true,
+        toastClass: "alert alert-success alert-with-icon",
+        positionClass: 'toast-' + from + '-' +  align
+      });
+  }
+
+  fill() {
+    this.categories1.forEach(element => {
+      if(element.gaugeValue <= 90) {
+        element.gaugeValue += 10;
+      } else if (element.gaugeValue > 90 && element.gaugeValue < 100) {
+        element.gaugeValue = 100;
+        this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> La benne <b>'+ element.gaugeLabel +'</b> est pleine.',
+     '', {
+        timeOut: 2000,
+        enableHtml: true,
+        toastClass: "alert alert-danger alert-with-icon",
+        positionClass: 'toast-bottom-center'
+      });
+      }
+    });
+    this.categories2.forEach(element => {
+      if(element.gaugeValue <= 90) {
+        element.gaugeValue += 10;
+      } else if (element.gaugeValue > 90 && element.gaugeValue < 100) {
+        element.gaugeValue = 100;
+        this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> La benne <b>'+ element.gaugeLabel +'</b> est pleine.',
+     '', {
+        timeOut: 2000,
+        enableHtml: true,
+        toastClass: "alert alert-danger alert-with-icon",
+        positionClass: 'toast-bottom-center'
+      });
+      }
+    });
   }
 }

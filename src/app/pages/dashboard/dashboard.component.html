@@ -2,7 +2,7 @@
 <div class=" content">
 
     <div class="card" style="padding-bottom: 2%;">
-      <div class=" card-header">Remplissage de la benne</div>
+      <div class=" card-header" (click)="fill()">Remplissage de la benne</div>
       <div class="card-body">
            
         <div class="row" style="justify-content: center; margin-bottom: 3%;">
@@ -34,9 +34,9 @@
     </div>
     <mat-slide-toggle style="color: rgba(255, 255, 255, 0.8);" [(ngModel)]="isChecked">Mode automatique</mat-slide-toggle>
         <div class=" col-md-4">
-         <button  class=" btn btn-danger btn-block"(click)="callTri"[disabled]="isChecked" > Appel Centre de tri
+        <button  class=" btn btn-danger btn-block" (click)="showNotification('bottom', 'center', 'tri')" [disabled]="isChecked" > Appel Centre de tri
         </button>
-        <button  class=" btn btn-danger btn-block"(click)="callTech"[disabled]="isChecked" > Appel centre technique
+        <button  class=" btn btn-danger btn-block" (click)="showNotification('bottom', 'center', 'tech')" [disabled]="isChecked" > Appel centre technique
         </button> 
         </div>     
 </div>
