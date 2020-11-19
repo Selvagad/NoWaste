@@ -1,11 +1,43 @@
 
 <div class=" content">
   <div class=" row">
-    <div class=" col-md-12">
-      <div class=" card card-plain">
-        <div class=" card-header">Google Maps</div>
-        <div class=" card-body"><div class=" map" id="map"></div></div>
+
+
+    <div class=" col-lg-6" >
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <h1 class=" card-category" style="font-size: 110%;">Choix d'une image en local</h1>
+        </div>
+        <div class=" card-body" style="min-height: 330px;">
+          <div style="margin-top: 8%; margin-left: 10%;">
+            <input #file type="file" accept='image/*' (change)="preview(file.files)" />
+          </div>
+        </div>
       </div>
     </div>
+
+    <div class=" col-lg-6">
+      <div class=" card card-chart">
+        <div class=" card-header">
+          <h1 class=" card-category" style="font-size: 110%;">Reconnaissance grâce au réseau de neuronnes</h1>
+        </div>
+        <div class=" card-body" style="min-height: 330px;">
+          <div style="text-align: center;">
+
+            <!--Afficher l'image reçu
+            <img src="" id="temp_image" width="100"> <p id="result" style="display: none; margin-top: 2%;">Résultat: {{result}}</p>-->
+
+            <img id="face-image" [src]="imgURL" height="200" *ngIf="imgURL">
+            <div #video id="webcam-container"></div>
+            <ul>
+                <li *ngFor="let item of predictions">{{item.className}} : {{(item.probability*100).toFixed(2)}}</li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
   </div>
 </div>

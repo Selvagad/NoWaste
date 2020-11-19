@@ -1,224 +1,81 @@
 import { Component, OnInit } from "@angular/core";
+import * as tmImage from '@teachablemachine/image';
 
-declare const google: any;
 
-interface Marker {
-lat: number;
-lng: number;
-label?: string;
-draggable?: boolean;
-}
 
 @Component({
   selector: "app-file",
   templateUrl: "file.component.html"
 })
+
 export class FileComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {
-
-        var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
-        var mapOptions = {
-            zoom: 13,
-            center: myLatlng,
-            scrollwheel: false, //we disable de scroll over the map, it is a really annoing when you scroll through page
-            styles: [{
-                "elementType": "geometry",
-                "stylers": [{
-                  "color": "#1d2c4d"
-                }]
-              },
-              {
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#8ec3b9"
-                }]
-              },
-              {
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                  "color": "#1a3646"
-                }]
-              },
-              {
-                "featureType": "administrative.country",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                  "color": "#4b6878"
-                }]
-              },
-              {
-                "featureType": "administrative.land_parcel",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#64779e"
-                }]
-              },
-              {
-                "featureType": "administrative.province",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                  "color": "#4b6878"
-                }]
-              },
-              {
-                "featureType": "landscape.man_made",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                  "color": "#334e87"
-                }]
-              },
-              {
-                "featureType": "landscape.natural",
-                "elementType": "geometry",
-                "stylers": [{
-                  "color": "#023e58"
-                }]
-              },
-              {
-                "featureType": "poi",
-                "elementType": "geometry",
-                "stylers": [{
-                  "color": "#283d6a"
-                }]
-              },
-              {
-                "featureType": "poi",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#6f9ba5"
-                }]
-              },
-              {
-                "featureType": "poi",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                  "color": "#1d2c4d"
-                }]
-              },
-              {
-                "featureType": "poi.park",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                  "color": "#023e58"
-                }]
-              },
-              {
-                "featureType": "poi.park",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#3C7680"
-                }]
-              },
-              {
-                "featureType": "road",
-                "elementType": "geometry",
-                "stylers": [{
-                  "color": "#304a7d"
-                }]
-              },
-              {
-                "featureType": "road",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#98a5be"
-                }]
-              },
-              {
-                "featureType": "road",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                  "color": "#1d2c4d"
-                }]
-              },
-              {
-                "featureType": "road.highway",
-                "elementType": "geometry",
-                "stylers": [{
-                  "color": "#2c6675"
-                }]
-              },
-              {
-                "featureType": "road.highway",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                  "color": "#9d2a80"
-                }]
-              },
-              {
-                "featureType": "road.highway",
-                "elementType": "geometry.stroke",
-                "stylers": [{
-                  "color": "#9d2a80"
-                }]
-              },
-              {
-                "featureType": "road.highway",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#b0d5ce"
-                }]
-              },
-              {
-                "featureType": "road.highway",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                  "color": "#023e58"
-                }]
-              },
-              {
-                "featureType": "transit",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#98a5be"
-                }]
-              },
-              {
-                "featureType": "transit",
-                "elementType": "labels.text.stroke",
-                "stylers": [{
-                  "color": "#1d2c4d"
-                }]
-              },
-              {
-                "featureType": "transit.line",
-                "elementType": "geometry.fill",
-                "stylers": [{
-                  "color": "#283d6a"
-                }]
-              },
-              {
-                "featureType": "transit.station",
-                "elementType": "geometry",
-                "stylers": [{
-                  "color": "#3a4762"
-                }]
-              },
-              {
-                "featureType": "water",
-                "elementType": "geometry",
-                "stylers": [{
-                  "color": "#0e1626"
-                }]
-              },
-              {
-                "featureType": "water",
-                "elementType": "labels.text.fill",
-                "stylers": [{
-                  "color": "#4e6d70"
-                }]
-              }
-            ]
-        };
-        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-        var marker = new google.maps.Marker({
-            position: myLatlng,
-            title: "Hello World!"
-        });
-
-        // To add the marker to the map, call setMap();
-        marker.setMap(map);
+  ngOnInit(): void {
+    
   }
+  url = 'https://teachablemachine.withgoogle.com/models/S_obh6TEt/';
+  model;
+  predictions;
+  webcam;
+  maxPredictions;
+
+  imagePath;
+  imgURL: any;
+  message: string;
+
+  //@ViewChild('video', { static: false }) video: ElementRef;
+
+  async preview(files) {
+    if (files.length === 0)
+      return;
+ 
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+ 
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]); 
+    reader.onload = (_event) => { 
+      this.imgURL = reader.result; 
+    }
+    
+    await this.init();
+    // predict
+    var image = document.getElementById("face-image");
+    this.predictions = await this.model.predict(image, false);
+  }
+
+  async init(){
+    const modelURL = this.url + 'model.json';
+    const metadataURL = this.url + 'metadata.json';
+    this.model = await tmImage.load(modelURL, metadataURL);
+    this.maxPredictions = this.model.getTotalClasses();
+  }
+  // tslint:disable-next-line:use-lifecycle-interface
+  async ngAfterViewInit() {
+    // const modelURL = this.url + 'model.json';
+    // const metadataURL = this.url + 'metadata.json';
+    // this.model = await tmImage.load(modelURL, metadataURL);
+    // this.maxPredictions = this.model.getTotalClasses();
+    // Convenience function to setup a webcam
+    // const flip = true; // whether to flip the webcam 
+    // this.webcam = new tmImage.Webcam(200, 200, flip);
+    // await this.webcam.setup(); // request access to the webcam
+    // await this.webcam.play();
+    // requestAnimationFrame(() =>
+    //   this.loop()
+    // );
+    // this.video.nativeElement.appendChild(this.webcam.canvas);
+  }
+
+  // async loop() {
+  //   this.webcam.update(); // update the webcam frame
+  //   this.predictions = await this.model.predict(this.webcam.canvas, true);
+  //   requestAnimationFrame(() =>
+  //     this.loop()
+  //   );
+  // }
 }
+  
