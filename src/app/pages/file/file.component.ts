@@ -139,6 +139,7 @@ export class FileComponent implements OnInit {
         element => element.probability === max
       );
       this.result = this.predictions[index].className;
+      document.getElementById('result').style.display = 'block';
       console.log(this.result)
       this.setObjetTrie(this.result)
       this.addData()      

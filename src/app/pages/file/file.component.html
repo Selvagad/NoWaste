@@ -29,10 +29,7 @@
 
             <img id="face-image" [src]="imgURL" height="200" *ngIf="imgURL">
             <div #video id="webcam-container"></div>
-            <ul>
-                <li *ngFor="let item of predictions">{{item.className}} : {{(item.probability*100).toFixed(2)}}</li>
-            </ul>
-            
+              <h4 id="result" style="margin-top: 4%; display: none;">{{result}}</h4>
           </div>
         </div>
         
