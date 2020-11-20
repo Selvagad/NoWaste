@@ -63,12 +63,12 @@ export class DashboardComponent implements OnInit {
   showNotification(from, align, centre){
     let tri: string;
     if (centre === 'tri') {
-      tri = 'Centre de tri';
+      tri = '<b> Centre de tri </b> de votre demande de collecte.';
     } else {
-      tri = "Centre technique";
+      tri = "<b>Centre technique </b> pour une intervention";
     }
 
-    this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Nous venons d\'alerter le <b>'+ tri +'</b> de votre demande de collecte.',
+    this.toastr.success('<span class="tim-icons icon-bell-55" [data-notify]="icon"></span> Nous venons d\'alerter le '+ tri ,
      '', {
         timeOut: 2000,
         enableHtml: true,

@@ -178,7 +178,7 @@ export class FileComponent implements OnInit {
     data: {
       labels: ['Bouteilles plastiques', 'Canettes', 'Gobelet carton', 'Non trié'],
       datasets: [{
-        label: "Countries",
+        label: "Nombre d'objet",
         fill: true,
         backgroundColor: gradientStroke,
         hoverBackgroundColor: gradientStroke,
